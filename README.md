@@ -1,4 +1,7 @@
-pivotal_reports
+Pivotal Reports
 ===============
 
-gem to easily get reported from pivotal
+gem to easily generate reports from pivotal
+
+Note: this is under active developement and not yet ready to use
+
