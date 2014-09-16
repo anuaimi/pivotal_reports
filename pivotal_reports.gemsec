@@ -1,0 +1,13 @@
+
+Gem::Specification.new do |s|
+  s.name        = 'pivotal_reports'
+  s.version     = '0.0.1'
+  s.date        = '2014-09-15'
+  s.summary     = "Will generate reports from a Pivotal account"
+  s.description = "tool to create the reports needed by a manager"
+  s.authors     = ["Athir Nuaimi"]
+  s.email       = 'anuaimi@devfoundry.com'
+  s.files       = ["lib/pivotal_reports.rb"]
+  s.homepage    = 'http://rubygems.org/gems/pivotal_reports'
+  s.license     = 'GPL v3'
+end
