@@ -28,8 +28,61 @@ module PivotalReports
   
   end
 
-  class Reports
-  
+  class Report
+    def initialize( api_key = nil)
+      # if key nil, try and load from .pivotal_reports file
+      # else save key
+      @client = TrackerApi::Client.new( token: @api_key)
+
+      @me = @client.me
+      @projects = @me.projects
+    end
+
+    def get_team
+      # go through each project and create a list of all team members
+      # want the id as name or initals may not be unique
+      # project.memberships.first.person.id
+
+    end
+
+
+    def list_projects
+
+      team_members = Hash.new
+
+      # create list of people in each project
+      projects = @client.projects
+      projects.each {|project|
+        members = project.memberships
+        members.each {|member|
+          puts member.person.name
+          team_members[member.person.id] = member.person
+        }
+      }
+
+      # current iterations
+      projects.each {|project|
+        current_iteration_number = project.current_iteration_number
+          current_iteration = project.iterations[current_iteration_number-1]
+          stories = current_iteration.stories
+          puts "#{project.name} (#{current_iteration_number}) #{current_iteration.start} #{current_iteration.finish} - #{stories.count}"
+
+          # find for given person
+          stories.each {|story|
+            story.current_state
+            owner_id = story.owned_by_id
+            owner = owner_id ? team_members[owner_id] : nil
+            name = owner ? owner.name : "unassigned"
+            puts "#{story.name} (#{story.current_state} - #{story.estimate}) #{name}"
+          }
+          puts ""
+
+          # get stories for a person
+          
+      };nil
+
+
+    end
   end
 
   
