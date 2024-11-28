@@ -3,5 +3,4 @@ Pivotal Reports
 
 gem to easily generate reports from pivotal
 
-Note: this is under active developement and not yet ready to use
-
+Note: this repo is quite old and as a result as been archived
